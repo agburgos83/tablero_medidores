@@ -34,6 +34,6 @@ out/
 /.nb-gradle/
 
 ### VS Code ###
+
 .vscode/
-mi-app.code-workspace
-backend.code-workspace
+*.code-workspace

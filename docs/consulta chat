@@ -1,0 +1,67 @@
+ultima consulta:
+
+perfecto. a mis consultas a mi contacto sobre :
+
+archivos txt
+necesito que me envíes un archivo txt para entender como se estructuran
+
+almacenamiento
+por lo que entendí se va a contar con un servidor externo donde se alojarán dichos archivos. me confirmas q esto es así?
+
+usuarios
+que tipos de usuario estás pensando y cuál es prioritario?
+
+interfaz
+además de una vista principal con gráficos y datos, te imaginás otras secciones o pantallas?
+¿Necesitás que los usuarios puedan descargar datos en Excel/PDF?
+
+mantenimiento
+si un medidor se cae queremos disparar algun tipo de alarma via whatsapp o sms?
+
+me prometieron una reunion con el cliente dentro de 3 semanas.
+
+me gustaría ir ganando tiempo y empezar a trabajar en aquellos primeros componentes
+
+vos para el MVP definiste:
+
+1️⃣ Procesamiento y almacenamiento de archivos TXT
+2️⃣ Backend y API
+3️⃣ Visualización de datos (Dashboard básico)
+4️⃣ Usuarios y seguridad
+5️⃣ Infraestructura y despliegue
+
+debería comenzar por el punto 1️⃣ ? o qué conviene? 
+además... conviene que todo sea un gran proyecto incluyendo un directorio para el frontend y otro para el back?
+
+---
+
+ult respuesta:
+
+Sí, lo mejor es empezar por el punto 1️⃣ (Procesamiento y almacenamiento de archivos TXT) porque:
+
+Sin datos, no hay dashboard. Necesitás asegurarte de que podés leer, procesar y almacenar los datos correctamente antes de visualizarlos.
+
+Te permitirá definir la estructura de la base de datos. Una vez que entiendas bien los datos del TXT, podés diseñar las tablas o colecciones necesarias.
+
+Podés avanzar sin esperar la reunión. Aunque no tengas todas las respuestas del cliente, podés ir simulando archivos y definiendo una estrategia de procesamiento.
+
+🚀 Plan de trabajo inicial
+🔹 Semana 1-2: Trabajar en el procesamiento de los archivos TXT.
+🔹 Semana 3: Diseñar la base de datos y definir un esquema de API básico.
+🔹 Semana 4: Levantar el backend y exponer los primeros endpoints.
+
+📌 Cómo organizar el código
+Lo ideal es que el backend y el frontend sean proyectos separados, pero dentro del mismo repositorio.
+📂 proyecto-dashboard (repositorio principal)
+    📁 backend → (Spring Boot, Node.js, etc.)
+    📁 frontend → (Svelte, React, Angular)
+
+✅ Ventajas de esta estructura:
+
+Separación clara entre lógica de negocio (backend) y UI (frontend).
+
+Permite escalar más fácilmente.
+
+Facilita el trabajo en equipo si en el futuro colaborás con alguien más.
+
+

@@ -1,0 +1,68 @@
+[
+    {
+        "deduplicationId": "f4e1b5c3-ff92-457c-93cd-131f9ae9eda4",
+        "time": "2025-05-06T18:54:39.138+00:00",
+        "deviceInfo": {
+            "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+            "tenantName": "ChirpStack",
+            "applicationId": "4d271fad-b6b6-42f0-8f6b-cbe7b5bf3088",
+            "applicationName": "UTT uno",
+            "deviceProfileId": "eb7e5fc0-656b-4dcd-ae00-6b8a0c5f51a9",
+            "deviceProfileName": "UTT test",
+            "deviceName": "46",
+            "devEui": "0101020304050639",
+            "deviceClassEnabled": "CLASS_A",
+            "tags": {}
+        },
+        "devAddr": "017e4870",
+        "adr": false,
+        "dr": 4,
+        "fCnt": 0,
+        "fPort": 15,
+        "confirmed": false,
+        "data": "aAEBAgMEBQYKvjEaaAAAAAAmnbNBAADIQgoAAAAAAAAAAAAAAAAAAAAKAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAW",
+        "rxInfo": [
+            {
+                "gatewayId": "24e124fffef11764",
+                "uplinkId": 18248,
+                "gwTime": "2025-05-06T18:54:39.138046+00:00",
+                "timeSinceGpsEpoch": "1430592897.138s",
+                "rssi": -83,
+                "snr": 14.5,
+                "channel": 3,
+                "location": {},
+                "context": "I/hOtQ==",
+                "crcStatus": "CRC_OK"
+            }
+        ],
+        "txInfo": {
+            "frequency": 915800000,
+            "modulation": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreadingFactor": 8,
+                    "codeRate": "CR_4_5"
+                }
+            }
+        },
+        "regionConfigId": "au915_0"
+    },
+    {
+        "deduplicationId": "9afc1727-1683-4fb9-b4e1-4f92f5faa0ef",
+        "time": "2025-05-06T18:54:06.725+00:00",
+        "deviceInfo": {
+            "tenantId": "52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+            "tenantName": "ChirpStack",
+            "applicationId": "4d271fad-b6b6-42f0-8f6b-cbe7b5bf3088",
+            "applicationName": "UTT uno",
+            "deviceProfileId": "eb7e5fc0-656b-4dcd-ae00-6b8a0c5f51a9",
+            "deviceProfileName": "UTT test",
+            "deviceName": "46",
+            "devEui": "0101020304050639",
+            "deviceClassEnabled": "CLASS_A",
+            "tags": {}
+        },
+        "devAddr": "017e4870",
+        "regionConfigId": "au915_0"
+    }
+]

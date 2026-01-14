@@ -31,20 +31,11 @@ public class KPIsDeAlertaDiarioController {
         this.repository = repository;
     }
 
-    // @CrossOrigin(origins = "http://localhost:5173")
-    // @GetMapping
-    // public ResponseEntity<KPIsDTO> getKPIs() {
-
-    // return ResponseEntity.ok(kpisService.generarKPIsDeAlertaDiario());
-
-    // }
-
     @GetMapping
     public ResponseEntity<KPIsDeAlertaDiario> getKPIs() {
-        var rangoMediciones = intervaloUltimoMinuto();
-        return (ResponseEntity<KPIsDeAlertaDiario>) repository.findByFechaBetween(rangoMediciones.start(),
-                rangoMediciones.end());
-
+        return repository.findTopByOrderByFechaDesc()
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.noContent().build());
     }
 
     @GetMapping("/ultimo")

@@ -56,15 +56,15 @@ public class PaqueteService {
                 ThreadLocalRandom.current().nextInt(16, 68),
                 LocalDateTime.now(),
                 ThreadLocalRandom.current().nextInt(0, 1000),
-                ThreadLocalRandom.current().nextDouble(10, 40),
-                ThreadLocalRandom.current().nextDouble(0, 100),
+                round2(ThreadLocalRandom.current().nextDouble(10, 40)),
+                round2(ThreadLocalRandom.current().nextDouble(0, 100)),
                 ThreadLocalRandom.current().nextInt(0, 10),
                 ThreadLocalRandom.current().nextInt(0, 10),
                 ThreadLocalRandom.current().nextInt(0, 10),
                 ThreadLocalRandom.current().nextInt(0, 10),
                 ThreadLocalRandom.current().nextInt(0, 10),
                 ThreadLocalRandom.current().nextInt(0, 10),
-                ThreadLocalRandom.current().nextDouble(0, 5),
+                round2(ThreadLocalRandom.current().nextDouble(0, 5)),
                 valoresVolumen);
 
         // codificas a base 64
@@ -76,21 +76,16 @@ public class PaqueteService {
         return paquete;
     }
 
-    // private List<Double> generarListaDeVolumen() {
-    // DecimalFormat df = new DecimalFormat("0.00");
-
-    // return ThreadLocalRandom.current()
-    // .doubles(24, 100, 5000) // 24 valores entre 100 y 5000
-    // .mapToObj(d -> Double.valueOf(df.format(d)))
-    // .collect(Collectors.toList());
-    // }
-
     private List<Double> generarListaDeVolumen() {
         return ThreadLocalRandom.current()
                 .doubles(24, 100, 5000) // 24 valores entre 100 y 5000
                 .map(d -> Math.round(d * 100.0) / 100.0) // redondea a 2 decimales
                 .boxed()
                 .collect(Collectors.toList());
+    }
+
+    private double round2(double v) {
+        return Math.round(v * 100.0 / 100.0);
     }
 
 }

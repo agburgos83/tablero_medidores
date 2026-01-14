@@ -17,51 +17,11 @@ public class KPIService {
         this.kpisDeAlertaDiarioRepository = kpisDeAlertaDiarioRepository;
     }
 
-    // public KPIsDTO calculaKPIs() {
-
-    // LocalDate hoy = LocalDate.now();
-    // List<Medicion> medicionesHoy = medicionRepository.findByFecha(hoy);
-
-    // int totalMedidores = (int) medicionesHoy.stream()
-    // .map(Medicion::getMedidorId)
-    // .distinct()
-    // .count();
-
-    // // Simulemos que falla si no reportó en 24 hs
-    // LocalDate ayer = hoy.minusDays(1);
-    // List<Long> medidoresHoyIds = medicionesHoy.stream()
-    // .map(Medicion::getMedidorId)
-    // .distinct()
-    // .toList();
-
-    // List<Long> medidoresAyerIds = medicionRepository.findByFecha(ayer).stream()
-    // .map(Medicion::getMedidorId)
-    // .distinct()
-    // .toList();
-
-    // int medidoresConFalla = (int) medidoresAyerIds.stream()
-    // .filter(id -> !medidoresHoyIds.contains(id))
-    // .count();
-
-    // double consumoDiario = medicionesHoy.stream()
-    // .mapToDouble(m -> m.getCaudalPromedio() != null ? m.getCaudalPromedio() : 0)
-    // .sum();
-
-    // double tempPromedio = medicionesHoy.stream()
-    // .mapToDouble(m -> m.getTemperaturaPromedio() != null ?
-    // m.getTemperaturaPromedio() : 0)
-    // .average()
-    // .orElse(0);
-
-    // return new KPIsDTO(totalMedidores, medidoresConFalla, consumoDiario,
-    // tempPromedio);
-
-    // }
-
     public void generarKPIsDeAlertaDiario(List<Medicion> mediciones) {
 
         LocalDateTime fecha = LocalDateTime.now();
 
+        Integer totalMedidores = mediciones.size();
         Integer totalMedidoresTemperaturaAlta = 0;
         Integer totalMedidoresCaudalPromedio = 0;
         Integer totalMedidoresCaudalCero = 0;
@@ -92,7 +52,7 @@ public class KPIService {
             if (med.getFlujoInverso() > 0)
                 totalMedidoresFlujoInverso++;
 
-            if (med.getCaudalCero() > 0)
+            if (med.getCaudalCero() < 1)
                 totalMedidoresCaudalCero++;
 
             if (med.getNivelDeBateria() < 20)
@@ -103,7 +63,7 @@ public class KPIService {
 
         }
 
-        KPIsDeAlertaDiario kpisDeAlertaDiario = new KPIsDeAlertaDiario(fecha, totalMedidoresTemperaturaAlta, 
+        KPIsDeAlertaDiario kpisDeAlertaDiario = new KPIsDeAlertaDiario(fecha, totalMedidores, totalMedidoresTemperaturaAlta, 
             totalMedidoresCaudalPromedio, totalMedidoresConSuccion, totalMedidoresConPerdida, 
             totalMedidoresConAire, totalMedidoresFlujoInverso, totalMedidoresCaudalCero, 
             totalMedidoresBateriaBaja, totalMedidoresMuestraInvalida);

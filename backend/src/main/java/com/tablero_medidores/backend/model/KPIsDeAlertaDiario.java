@@ -17,6 +17,7 @@ public class KPIsDeAlertaDiario {
 
     private LocalDateTime fecha;
 
+    private Integer totalMedidores;
     private Integer totalMedidoresTemperaturaAlta;
     private Integer totalMedidoresCaudalPromedio;
     private Integer totalMedidoresConSuccion;
@@ -30,11 +31,15 @@ public class KPIsDeAlertaDiario {
     public KPIsDeAlertaDiario() {
     }
 
-    public KPIsDeAlertaDiario(LocalDateTime fecha, Integer totalMedidoresTemperaturaAlta,
+
+    // nivel de bateria + caudal 0 + flujo inverso
+
+    public KPIsDeAlertaDiario(LocalDateTime fecha, Integer totalMedidores, Integer totalMedidoresTemperaturaAlta,
             Integer totalMedidoresCaudalPromedio, Integer totalMedidoresConSuccion, Integer totalMedidoresConPerdida,
             Integer totalMedidoresConAire, Integer totalMedidoresConFlujoInverso, Integer totalMedidoresConCaudalCero,
             Integer totalMedidoresConBateriaBaja, Integer totalMedidoresConMuestraInvalida) {
         this.fecha = fecha;
+        this.totalMedidores = totalMedidores;
         this.totalMedidoresTemperaturaAlta = totalMedidoresTemperaturaAlta;
         this.totalMedidoresCaudalPromedio = totalMedidoresCaudalPromedio;
         this.totalMedidoresConSuccion = totalMedidoresConSuccion;
@@ -43,11 +48,14 @@ public class KPIsDeAlertaDiario {
         this.totalMedidoresConFlujoInverso = totalMedidoresConFlujoInverso;
         this.totalMedidoresConCaudalCero = totalMedidoresConCaudalCero;
         this.totalMedidoresConBateriaBaja = totalMedidoresConBateriaBaja;
-        this.totalMedidoresConMuestraInvalida = totalMedidoresConMuestraInvalida;
     }
 
     public LocalDateTime getFecha() {
         return fecha;
+    }
+
+    public Integer getTotalMedidores() {
+        return totalMedidores;
     }
 
     public Integer getTotalMedidoresTemperaturaAlta() {

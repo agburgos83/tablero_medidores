@@ -29,12 +29,12 @@
 </script>
 
 <svelte:head>
-	<title>Dashboard de Métricas - Cooperativa 30 de Agosto</title>
+	<title>Dashboard de Métricas — Coop. Ltda San Juan</title>
 </svelte:head>
 
 <div class="dashboard">
 	<header class="dashboard-header">
-		<h3 style="text-align: left;"><strong>Dashboard de Métricas</strong></h3>
+		<h3 style="text-align: left;">Dashboard de Métricas — Coop. Ltda San Juan</h3>
 	</header>
 
 	<div class="main-surface">
@@ -50,7 +50,7 @@
 			<div class="map-surface">
 				<div class="map-container">
 					<div class="map-header">
-						<h3>Mapa de medidores - Partido de La Plata</h3>
+						<h3>Mapa de medidores</h3>
 					</div>
 
 					<div class="map-canvas">
@@ -69,7 +69,7 @@
 							>
 							<button
 								on:click={() => setFilter('critico')}
-								class:selected={selectedFilter === 'critico'}>Criticos</button
+								class:selected={selectedFilter === 'critico'}>Críticos</button
 							>
 						</div>
 

@@ -39,6 +39,10 @@
 		return v !== null;
 	}
 
+	function handleClickOutside() {
+		clickedMeter = null;
+	}
+
 	$: ready = map && width > 0 && height > 0;
 
 	$: {
@@ -96,13 +100,14 @@
 	}
 
 	let hoveredMeter: MeterPoint | null = null;
+	let clickedMeter: MeterPoint | null = null;
 
 	const metricKeys = Object.keys(THRESHOLDS) as Array<keyof typeof THRESHOLDS>;
 </script>
 
 <div class="canvas" bind:clientWidth={width} bind:clientHeight={height}>
 	{#if ready}
-		<svg viewBox={`0 0 ${width} ${height}`}>
+		<svg viewBox={`0 0 ${width} ${height}`} on:click={() => (clickedMeter = null)}>
 			<g class="localidades">
 				{#each localidades as localidad}
 					<path
@@ -128,52 +133,56 @@
 						stroke="white"
 						stroke-width="2"
 						opacity={opacityFor(m)}
-						on:mouseenter={() => (hoveredMeter = m)}
-						on:mouseleave={() => (hoveredMeter = null)}
-						on:click={() => { hoveredMeter = m; onSelect(m); }}
+						on:click|stopPropagation={() => {
+							clickedMeter = m;
+							onSelect(m);
+						}}
 						style="cursor: pointer;"
 					/>
 				{/each}
 
-				{#if hoveredMeter}
+				{#if clickedMeter}
 					<g
 						class="tooltip"
-						transform={`translate(${hoveredMeter.x + 10}, ${hoveredMeter.y - 30})`}
+						transform={`translate(${clickedMeter.x + 10}, ${clickedMeter.y - 30})`}
 						pointer-events="none"
 					>
 						<rect
 							x="0"
 							y="-4"
-							width="270"
-							height={45 + metricKeys.length * 16}
+							width="210"
+							height={80 + metricKeys.length * 16}
 							rx="6"
-							fill=#ffffe0
+							fill="#ffffe0"
 							stroke="#333"
 							opacity="0.95"
 						/>
-						<text x="8" y="12" font-size="12" fill="#000" font-weight="bolder">Medidor: {hoveredMeter.medidorId}</text>
-						<text x="120" y="12" font-size="12" fill="#000" font-weight="bolder"
-							>Dirección: {hoveredMeter.direccion}</text
+						<text x="8" y="14" font-size="12" fill="#000" font-weight="bolder"
+							>Medidor: {clickedMeter.medidorId}</text
+						>
+						<text x="8" y="29" font-size="12" fill="#000" font-weight="bolder"
+							>Dirección: {clickedMeter.direccion}</text
+						>
+						<text x="8" y="44" font-size="12" fill="#000" font-weight="bolder"
+							>Severidad: {clickedMeter.severity}</text
+						>
+						<text x="8" y="59" font-size="12" fill="#000" font-weight="bolder"
+							>— — — — — — — — — — — — —</text
 						>
 
 						{#each metricKeys as key, i}
-                            <!-- obtener el valor real; THRESHOLDS usa "bateria" pero el medidor tiene "nivelDeBateria" -->
-                            {#if (key === 'bateria' ? hoveredMeter.nivelDeBateria !== undefined : hoveredMeter[key] !== undefined)}
-                                <text x="8" y={30 + i * 16} font-size="12" fill="#000">
-                                    {key}: {(key === 'bateria' ? hoveredMeter.nivelDeBateria : hoveredMeter[key])}
-                                    <tspan> (warn: {THRESHOLDS[key].warn}, crit: {THRESHOLDS[key].crit})</tspan>
-                                </text>
-                            {:else}
-                                <text x="8" y={30 + i * 16} font-size="12" fill="#666">
-                                    {key}: n/a (warn: {THRESHOLDS[key].warn}, crit: {THRESHOLDS[key].crit})
-                                </text>
-                            {/if}
-                        {/each}
-
-						<!-- severidad al final -->
-						<text x="8" y={30 + metricKeys.length * 16} font-size="12" fill="#000"
-							>Severidad: {hoveredMeter.severity}</text
-						>
+							<!-- obtener el valor real; THRESHOLDS usa "bateria" pero el medidor tiene "nivelDeBateria" -->
+							{#if key === 'bateria' ? clickedMeter.nivelDeBateria !== undefined : clickedMeter[key] !== undefined}
+								<text x="8" y={74 + i * 16} font-size="12" fill="#000">
+									{key}: {key === 'bateria' ? clickedMeter.nivelDeBateria : clickedMeter[key]}
+									<tspan> (warn: {THRESHOLDS[key].warn}, crit: {THRESHOLDS[key].crit})</tspan>
+								</text>
+							{:else}
+								<text x="8" y={30 + i * 16} font-size="12" fill="#666">
+									{key}: n/a (warn: {THRESHOLDS[key].warn}, crit: {THRESHOLDS[key].crit})
+								</text>
+							{/if}
+						{/each}
 					</g>
 				{/if}
 			</g>
@@ -197,6 +206,7 @@
 		display: block;
 	}
 
-	.tooltip text { font-family: system-ui, Arial, sans-serif; }
-	
+	.tooltip text {
+		font-family: system-ui, Arial, sans-serif;
+	}
 </style>

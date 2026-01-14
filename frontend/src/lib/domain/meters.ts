@@ -10,4 +10,5 @@ type Medicion = {
     caudalCero: number;
     aire: number;
     perdida: number;
+    estado: string;
 };

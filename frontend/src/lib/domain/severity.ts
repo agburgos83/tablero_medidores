@@ -5,7 +5,7 @@ export const THRESHOLDS = {
     caudalCero: { warn: 5, crit: 20 },
     flujoInverso: { warn: 1, crit: 5 },
     bateria: { warn: 30, crit: 15 }, // % (al revés)
-    perdida: { warn: 5, crit: 15 }
+    perdida: { warn: 5, crit: 15 },
 };
 
 export function getSeverity(m: Medicion): Severity {
@@ -24,12 +24,15 @@ export function getSeverity(m: Medicion): Severity {
     if (m.nivelDeBateria <= THRESHOLDS.bateria.crit) isCritical = true;
     else if (m.nivelDeBateria <= THRESHOLDS.bateria.warn) isAlert = true;
 
-
-
-    if (isCritical) return 'critico';
-    if (isAlert) return 'alerta';
-    return 'normales';
-
-
-
+    if (isCritical) {
+        m.estado = 'critico';
+        return 'critico';
+    } else if (isAlert) {
+        m.estado = 'alerta';
+        return 'alerta';
+    }  else {
+        m.estado = 'mormales';
+        return 'normales';
+    }
+    
 }

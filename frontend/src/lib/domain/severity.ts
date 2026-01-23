@@ -1,6 +1,8 @@
-export type Severity = 'normales' | 'alerta' | 'critico';
+import type { medicion } from "./medicion";
 
-export const THRESHOLDS = {
+export type Severity = 1 | 2 | 3;
+
+export const LIMITES = {
     aire: { warn: 10, crit: 30 },
     caudalCero: { warn: 5, crit: 20 },
     flujoInverso: { warn: 1, crit: 5 },
@@ -8,31 +10,28 @@ export const THRESHOLDS = {
     perdida: { warn: 5, crit: 15 },
 };
 
-export function getSeverity(m: Medicion): Severity {
+export function getSeverity(m: medicion): Severity {
     let isCritical = false;
     let isAlert = false;
 
-    if (m.aire >= THRESHOLDS.aire.crit) isCritical = true;
-    else if (m.aire >= THRESHOLDS.aire.warn) isAlert = true;
+    if (m.aire >= LIMITES.aire.crit) isCritical = true;
+    else if (m.aire >= LIMITES.aire.warn) isAlert = true;
 
-    if (m.caudalCero >= THRESHOLDS.caudalCero.crit) isCritical = true;
-    else if (m.caudalCero >= THRESHOLDS.caudalCero.warn) isAlert = true;
+    if (m.caudalCero >= LIMITES.caudalCero.crit) isCritical = true;
+    else if (m.caudalCero >= LIMITES.caudalCero.warn) isAlert = true;
 
-    if (m.flujoInverso >= THRESHOLDS.flujoInverso.crit) isCritical = true;
-    else if (m.flujoInverso >= THRESHOLDS.flujoInverso.warn) isAlert = true;
+    if (m.flujoInverso >= LIMITES.flujoInverso.crit) isCritical = true;
+    else if (m.flujoInverso >= LIMITES.flujoInverso.warn) isAlert = true;
 
-    if (m.nivelDeBateria <= THRESHOLDS.bateria.crit) isCritical = true;
-    else if (m.nivelDeBateria <= THRESHOLDS.bateria.warn) isAlert = true;
+    if (m.nivelDeBateria <= LIMITES.bateria.crit) isCritical = true;
+    else if (m.nivelDeBateria <= LIMITES.bateria.warn) isAlert = true;
 
     if (isCritical) {
-        m.estado = 'critico';
-        return 'critico';
+        return 3;
     } else if (isAlert) {
-        m.estado = 'alerta';
-        return 'alerta';
-    }  else {
-        m.estado = 'mormales';
-        return 'normales';
+        return 2;
+    } else {
+        return 1;
     }
-    
+
 }

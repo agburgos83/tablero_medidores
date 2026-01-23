@@ -21,7 +21,7 @@
 	color: var(--color-text);
 }
 
-body {
+/* body {
 	min-height: 100vh;
 	margin: 0;
 	background-attachment: fixed;
@@ -30,7 +30,18 @@ body {
 	background-image:
 		radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 100%),
 		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+} */
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: rgb(173, 175, 196);
+	/* background: linear-gradient(180deg, #fff, rgb(247, 253, 158)); */
+	background-image: none;
+	background-attachment: initial;
+	background-size: auto;
 }
+
 
 h1,
 h2,
@@ -63,7 +74,7 @@ h2 {
 pre {
 	font-size: 16px;
 	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
+	background-color: rgba(135, 183, 255, 0.45);
 	border-radius: 3px;
 	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
 	padding: 0.5em;

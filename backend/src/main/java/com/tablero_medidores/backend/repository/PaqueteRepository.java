@@ -11,9 +11,9 @@ import com.tablero_medidores.backend.model.Paquete;
 
 public interface PaqueteRepository extends JpaRepository<Paquete, Long> {
 
-    List<Paquete> findByFecha(LocalDateTime fecha);
+    List<Paquete> findByTimestamp(LocalDateTime fecha);
 
-    List<Paquete> findByFechaBetween(LocalDateTime start, LocalDateTime end);
+    List<Paquete> findByTimestampBetween(LocalDateTime start, LocalDateTime end);
 
     
 

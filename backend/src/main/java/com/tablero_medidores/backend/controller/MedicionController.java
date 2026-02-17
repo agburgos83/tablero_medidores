@@ -37,10 +37,10 @@ public class MedicionController {
     }
 
     // Todas las mediciones de hoy
-    @GetMapping("/today")
-    public List<Medicion> today() {
-        return medicionRepository.findToday();
-    }
+    // @GetMapping("/today")
+    // public List<Medicion> today() {
+    //     return medicionRepository.findToday();
+    // }
 
     // Buscar por ID
     @GetMapping("/{id}")

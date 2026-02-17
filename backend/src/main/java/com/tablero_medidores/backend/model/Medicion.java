@@ -16,12 +16,15 @@ public class Medicion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    Paquete paquete;
+    // @OneToOne
+    // private Paquete paquete;
+
+    @ManyToOne
+    @JoinColumn(name = "paquete_id", nullable = false)
+    private Paquete paquete;
 
     // datos asociados
     private Long medidorId;
-    private LocalDateTime fecha;
     private String direccion;
     private Double latitud;
     private Double longitud;
@@ -45,15 +48,14 @@ public class Medicion {
     private Double caudalPromedio;
     private List<Double> medicionesDeVolumen;
 
-    public Medicion(Long medidorId, LocalDateTime fecha, String direccion, Double latitud, 
-            Double longitud, Integer inicioPaquete, Integer finPaquete, LocalDateTime timestamp, 
-            Integer direccionLora, Double temperaturaPromedio, Double nivelDeBateria, Integer aire, 
+    public Medicion(Long medidorId, String direccion, Double latitud,
+            Double longitud, Integer inicioPaquete, Integer finPaquete, LocalDateTime timestamp,
+            Integer direccionLora, Double temperaturaPromedio, Double nivelDeBateria, Integer aire,
             Integer succion, Integer perdida,
             Integer flujoInverso, Integer caudalCero, Integer muestrasInvalidas,
             Double caudalPromedio, List<Double> medicionesDeVolumen) {
 
         this.medidorId = medidorId;
-        this.fecha = fecha;
         this.direccion = direccion;
         this.latitud = latitud;
         this.longitud = longitud;
@@ -75,6 +77,10 @@ public class Medicion {
 
     }
 
+    public void setPaquete(Paquete paquete) {
+        this.paquete = paquete;
+    }
+
     public Long getId() {
         return id != null ? id : null;
     }
@@ -83,8 +89,8 @@ public class Medicion {
         return medidorId != null ? medidorId : null;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha != null ? fecha : null;
+    public Long paqueteId() {
+        return paquete.getId() != null ? paquete.getId() : null;
     }
 
     public String getDireccion() {

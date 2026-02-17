@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tablero_medidores.backend.DTO.PaqueteDTO;
 import com.tablero_medidores.backend.model.Medidor;
 import com.tablero_medidores.backend.model.Paquete;
 import com.tablero_medidores.backend.repository.PaqueteRepository;
@@ -39,10 +37,7 @@ public class PaqueteService {
     public void generarPaquetes(List<Medidor> medidores) throws JsonProcessingException {
 
         for (Medidor medidor : medidores) {
-
-            // 1 generar paqueteDTO
             Paquete paquete = generarPaquete(medidor);
-
             paqueteRepository.save(paquete);
         }
     }
@@ -56,7 +51,7 @@ public class PaqueteService {
                 ThreadLocalRandom.current().nextInt(16, 68),
                 LocalDateTime.now(),
                 ThreadLocalRandom.current().nextInt(0, 1000),
-                round2(ThreadLocalRandom.current().nextDouble(10, 40)),
+                round2(ThreadLocalRandom.current().nextDouble(0, 40)),
                 round2(ThreadLocalRandom.current().nextDouble(0, 100)),
                 ThreadLocalRandom.current().nextInt(0, 10),
                 ThreadLocalRandom.current().nextInt(0, 10),

@@ -81,4 +81,11 @@ public class Medidor {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    @Override
+    public String toString() {
+        return "Medidor " + this.getId() +
+                " | Dirección: " + this.getDireccion() +
+                " | Barrio: " + this.getBarrio();
+    }
 }

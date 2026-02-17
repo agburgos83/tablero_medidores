@@ -50,7 +50,6 @@ public class MedicionService {
 
         Medicion medicion = new Medicion(
                 paquete.getMedidor().getId(),
-                paquete.getFecha(),
                 paquete.getMedidor().getDireccion(),
                 paquete.getMedidor().getLatitud(),
                 paquete.getMedidor().getLongitud(),
@@ -68,6 +67,8 @@ public class MedicionService {
                 dataPaquete.getMuestrasInvalidas(),
                 dataPaquete.getCaudalPromedio(),
                 dataPaquete.getMedicionesDeVolumen());
+
+        medicion.setPaquete(paquete);
 
         medidorRepository.save(medicion);
 

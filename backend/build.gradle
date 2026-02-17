@@ -37,12 +37,7 @@ dependencies {
 	implementation 'org.postgresql:postgresql:42.7.3' 
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.0'
 	testImplementation 'org.apache.httpcomponents.client5:httpclient5'
-	
-	
-	// implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-
-
-	// compile "org.springframework.boot:spring-boot-starter-oauth2-client:2.3.3.RELEASE"
+	implementation 'org.springframework.boot:spring-boot-starter-mail:3.5.7'
 }
 
 tasks.named('test') {

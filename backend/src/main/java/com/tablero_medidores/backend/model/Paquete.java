@@ -21,18 +21,18 @@ public class Paquete {
     @ManyToOne
     private Medidor medidor;
 
-    private LocalDateTime fecha;
+    private LocalDateTime timestamp;
 
-    @OneToOne(mappedBy = "paquete", cascade = CascadeType.ALL)
-    private Medicion medicion;
+    // @OneToOne(mappedBy = "paquete", cascade = CascadeType.ALL)
+    // private Medicion medicion;
 
     @Lob
     private String data;
 
-    public Paquete(String data, Medidor medidor, LocalDateTime fecha) {
+    public Paquete(String data, Medidor medidor, LocalDateTime timestamp) {
         this.data = data;
         this.medidor = medidor;
-        this.fecha = fecha;
+        this.timestamp = timestamp;
     }
 
     public Paquete() {}
@@ -49,6 +49,10 @@ public class Paquete {
         return medidor;
     }
 
+    public LocalDateTime getTimestamp() {
+        return this.timestamp;
+    }
+
     public void setMedidor(Medidor med) {
         this.medidor = med;
     }
@@ -57,11 +61,8 @@ public class Paquete {
         this.data = encodedData;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
 }

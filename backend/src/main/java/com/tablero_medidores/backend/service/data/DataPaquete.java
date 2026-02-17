@@ -24,9 +24,10 @@ public class DataPaquete {
     private Double caudalPromedio;
     private List<Double> medicionesDeVolumen;
 
-    public DataPaquete(Integer inicioPaquete, Integer finPaquete, LocalDateTime timestamp, Integer direccionLora, 
-        Double temperaturaPromedio, Double nivelDeBateria, Integer succion, Integer aire, Integer perdida, 
-        Integer flujoInverso, Integer caudalCero, Integer muestrasInvalidas, Double caudalPromedio, List<Double> medicionesDeVolumen) {
+    public DataPaquete(Integer inicioPaquete, Integer finPaquete, LocalDateTime timestamp, Integer direccionLora,
+            Double temperaturaPromedio, Double nivelDeBateria, Integer succion, Integer aire, Integer perdida,
+            Integer flujoInverso, Integer caudalCero, Integer muestrasInvalidas, Double caudalPromedio,
+            List<Double> medicionesDeVolumen) {
         this.inicioPaquete = inicioPaquete;
         this.finPaquete = finPaquete;
         this.timestamp = timestamp;

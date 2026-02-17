@@ -79,20 +79,21 @@
 
 	// Colores por tipo
 	function colorFor(key: string) {
-		const base = d3.color('#1e3a5f');
+		const base = d3.color('#78899F');
 
 		if (!base) return '#999';
 
 		if (key === 'normal') {
-			return base.brighter(1.8).formatHex(); // más claro
+			return base.brighter(0.6).formatHex(); // más claro
 		}
 
 		if (key === 'alerta') {
-			return base.brighter(0.6).formatHex(); // medio
+			return base.brighter(0.4).formatHex(); // medio
 		}
 
 		if (key === 'critico') {
-			return base.darker(1.2).formatHex(); // más oscuro
+			return base.formatHex(); 
+			// return base; 
 		}
 
 		return base.formatHex();
@@ -128,8 +129,6 @@
 	`;
 	}
 </script>
-
-<!-- <svelte:window on:resize={resize} /> -->
 
 <div class="chart-root" bind:this={container}>
   <svg viewBox={`0 0 ${width} ${height}`}>

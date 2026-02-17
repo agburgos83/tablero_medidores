@@ -14,9 +14,9 @@
 
 	$: if (valores) {
 		fractions = [
-			{ key: 'normal', value: valores.normal },
-			{ key: 'alerta', value: valores.alerta },
-			{ key: 'critico', value: valores.critico }
+			{ key: 'normal', label: 'Normal', value: valores.normal },
+			{ key: 'alerta', label: 'Alerta', value: valores.alerta },
+			{ key: 'critico', label: 'Crítico', value: valores.critico }
 		];
 	}
 
@@ -73,7 +73,7 @@
 				bind:this={tooltipEl}
 				style="left:{tooltipPos.x + 15}px; top:{tooltipPos.y - 10}px"
 			>
-				<strong>{hoveredFraction.key}</strong><br />
+				<strong>{hoveredFraction.label}</strong><br />
 				Porcentaje: {hoveredFraction.value.toFixed(1)} %
 			</div>
 		{/if}
@@ -133,7 +133,7 @@
 	.gaugeChart-header {
 		flex: 0 0 auto;
 		padding: 0.5rem 1rem;
-		background: #eef1f6;
+		background: #E9EBEF;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

@@ -44,7 +44,7 @@
 
 <div class="chart-root" bind:this={container}>
 	<svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`}>
-		<g fill="#1e3a5f">
+		<g fill="#78899F">
 			{#each barras as b}
 				<rect
 					x={xScale(b.key) ?? 0}
@@ -66,7 +66,7 @@
 					x={(xScale(b.key) ?? 0) + xScale.bandwidth() / 2}
 					y={22}
 					font-size="10"
-					fill="gray"
+					fill="black"
 					lengthAdjust="spacingAndGlyphs"
 				>
 					{b.label}
@@ -83,7 +83,7 @@
 						x={-9}
 						y={yScale(tick)}
 						font-size="10"
-						fill="gray"
+						fill="black"
 						lengthAdjust="spacingAndGlyphs"
 					>
 						{Math.trunc(tick)}%

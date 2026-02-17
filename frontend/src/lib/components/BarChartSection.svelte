@@ -136,7 +136,7 @@
 	.barChart-header {
 		flex: 0 0 auto;
 		padding: 0.5rem 1rem;
-		background: #eef1f6;
+		background: #E9EBEF;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

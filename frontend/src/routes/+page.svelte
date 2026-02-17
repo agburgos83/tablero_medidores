@@ -57,7 +57,7 @@
 
 <style>
 	.dashboard {
-		background: #eef1f6;
+		background: #E9EBEF;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
@@ -90,6 +90,7 @@
 		gap: 1.5rem;
 		padding: 1rem 2rem;
 		height: 400px;
+		margin-bottom: 15px;
 	}
 
 	/* .chart-cell {
